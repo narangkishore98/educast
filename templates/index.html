@@ -1,0 +1,164 @@
+<html>
+    <head>
+        <title>Educast - The Revolution</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        
+    </head>
+    <body class="be-font" >
+        {%include "navbar.html"%}
+        <div class="container-fluid">
+            <div class="row index-bg" >
+                <div class="col-md-12">
+                    <div class="row" >
+                        <div class="col-1"></div>
+                        <div class="col-10 p-5" >
+                            <br/><br/>
+                            <img class="img-fluid animated fadeInUp" src="/static/images/educast-w.png" width="50%"/>
+                                <h1 class="text-light">The Re-Cast of Education System.</h1>
+                                <button class="btn btn-outline-light">Learn More</button>
+                        </div>
+                        <div class="col-1">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-5 bg-dark">
+                <div class="col-md-5 bg-light p-5 ">
+                    <h1 style="font-size: 600%" class="text-center"><i class="fas fa-child"></i></h1>
+                    <h2 class="text-center text-dark">Full Report Control</h2>
+                    <p class="text-center text-dark">You'll have full control over your child by which you can keep track of his/her activites in the school</p>
+                    <center><a class="btn btn-lg btn-outline-dark" href="{{url_for('p_login')}}">Parent Login</a></center>
+                </div>
+                <div class="col-md-2 p-5"></div>
+                <div class="col-md-5 bg-light p-5 ">
+                    <h1 style="font-size: 600%" class="text-center text-dark"><i class="fas fa-university"></i></h1>
+                    <h2 class="text-center text-dark">Digital School Administraion</h2>
+                    <p class="text-center text-dark">Take your school online and make all the administrative tasks on web. You may handle everything with an ease of technology</p>
+                    <center><a class="btn btn-lg btn-outline-dark" href="{{url_for('s_login')}}">School Login</a></center>
+                </div>
+            </div>
+            <div class="row bg-classroom p-5">
+                <div class="col-md-4 p-5">
+                    <center><img src="/static/images/educast.png" class="img-fluid animated fadeInUp"/></center>
+                </div>
+                <div class="col-md-8 p-5">
+                    <center><h1 class="text-educast" style="font-size: 500%; font-weight: bold;">Educast</h1>
+                    <h1 class="text-educast bg-dark-transparent">Recasting the education system</h1></center>
+                </div>
+            </div>
+            <div class="row bg-educast p-5">
+                <div class="col-md-12">
+                    <h1 class="text-center">Theory Explained</h1>
+                </div>
+                <div class="col-md-4 p-5">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">The School</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Services</h6>
+                            <p class="card-text">We Will be solving each and every problem of the school organization with keeping all the things in mind</p>
+                            <a href="#" class="card-link">Read More</a>
+                            
+                        </div>
+                        </div>
+                </div>
+                <div class="col-md-4 p-5">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">The Student</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Career Enhancements</h6>
+                            <p class="card-text">By this system the student will be more focused in studies and can grab the various career oppurtunities.</p>
+                            <a href="#" class="card-link">Read More</a>
+                            
+                        </div>
+                        </div>
+                </div>
+                <div class="col-md-4 p-5">
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">The Parent</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Thrack The Activity</h6>
+                            <p class="card-text">The Parents will have ful control over the activites of his child in the school. All reports will be shared by school</p>
+                            <a href="#" class="card-link">Read More</a> 
+                            
+                        </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row bg-future p-5">
+                <div class="col-md-12 p-5 bg-light-transparent text-center">
+                    <h1>The Future Of Schooling Administraion is here</h1>
+                    <br/><br/>
+                    <h4>We are here to make the changes in your old administrative tasks. From now, get rid of those files and registers, spreadsheets or documnet files. A complete school administrative application is here to provide you the facilites which will lower the workload of your staff and make all the things in a tehnical manner. </h4>
+                    <h4>You'll be providing with plenty of tools which will help you to manage the fee of your students, sending test reports to the parents managing employee or staff details, time tables and many more. . .</h4>
+                    
+                </div>
+            </div>
+            <div class="row bg-light p-5">
+                <div class="col-md-5  p-5 text-center text-dark" style="border-right: 1px solid black;">
+                    <h1>Clear All Your Doubts here.</h1><hr/>
+                    <h5>We Ensure you the 24hrs CallBack Service for solving any kind of problem you have.</h5>
+                </div>
+                <div class="col-md-7 p-5 text-dark">
+                    <h2>Write your query to us.</h2>
+                    <p>We Never Share your personal Information with anyone.</p>
+                    <form method="POST" action="{{url_for('takeQuery')}}">
+                        <input type="text" placeholder="Full Name" name="name" required="required" class=" my-2 form-control"/>
+                        <input type="email" placeholder="Email" name="email" required="required" class=" my-2 form-control"/>
+                        <input type="tel" placeholder="Mobile Number " maxlength="10" name="phone" required=" my-2 required" class="form-control"/>
+                        <textarea class="form-control my-2" rows="3" name=query required="required" placeholder="Write your Query here"></textarea>
+                        <button type="submit" style="float:right" class="btn btn-control btn-right btn-outline-dark">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer bg-dark p-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 p-5">
+                        <div class="row">
+                            <div class="col-md-6 text-light text-center">
+                                <h4>Contact Us</h4>
+                                <p>We Understande the need of our clients.</p>
+                                <hr/>
+                                <h5><i class="fas fa-phone"></i> 7009750087</h5>
+                                <h5><i class="fas fa-envelope"></i> helpdesk@educast.com</h5>
+                                <p>or you may visit at</p>
+                                <p><i class="fas fa-map-marker-alt"></i> 44, Floor 1, ABC Market, Liberty Market, Opp. Rly Stn. Amritsar</p>
+                            </div>
+                            <div class="col-md-6 text-center text-light">
+                                <h4>Quick Links</h4>
+                                <br/>
+                                <hr/>
+                                <a class='text-light' href="https://www.payumoney.com">Payment Partner</a><br/>
+                                <a class='text-light' href="{{url_for('apply')}}">Apply For Membership</a><br/>
+                                <a class='text-light' href="{{url_for('apply')}}">Thing For Parents</a><br/>
+                                <a class='text-light' href="{{url_for('apply')}}">FAQs</a><br/>
+                                <a class='text-light' href="{{url_for('admin')}}">Edu Admin</a><br/>
+                                <br/>
+                                <p>Connect With Us: </p>
+                                <a class='text-light' href="https://www.facebook.com/narangkishore98"><i class="fab fa-facebook"></i></a>&nbsp;
+                                <a class='text-light' href="https://www.instagram.com/narangkishore98"><i class="fab fa-instagram"></i></a>&nbsp;
+                                <a class='text-light' href="https://www.plus.google.com/narangkishore98"><i class="fab fa-google-plus-square"></i></a>
+                            </div>
+                            <div class="col-md-6"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-5">
+                        <img class="img fluid" width="90%" src="/static/images/educast-w.png"/><br/><br/>
+                        <p class="text-center text-light">&copy; Educast. All Rights Reserved.</p>
+                        <br/>
+                        <p class="text-center text-light">Made with <i class="fas fa-heart text-danger"></i> by <a style="text-decoration:none;"class="text-light " href="https://www.bikloo.co.nf">Bikloo</a> in India</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

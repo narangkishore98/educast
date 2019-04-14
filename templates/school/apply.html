@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>Educast - School Module</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+    </head>
+    <body class="be-font">
+        {%include "navbar.html"%}
+        <div class="container-fluid">
+            <div class="row bg-schoolapply">
+                <div class="col-md-7 p-5 bg-secondary-transparent text-center text-light">
+                    <h1 class="text-center" style="font-size: 400%">Future Of Nation</h1>
+                    <h1>is here</h1>
+                    <hr class="text-light"/>
+                    <br/>
+                    <h4>Send all the reports, fee details and all other notifications of your students to their respective parents.</h4>
+                    <br/>
+                    <h5>Manage your employees, students and transactional data in your tips.</h5>
+                    <br/>
+                    <h5>Keep track of attendence of each and every student.</h5>
+                </div>
+                <div class="col-md-5  py-5 bg-dark-transparent">
+                    <div class="row">
+                            <div class="col-1"></div>
+                            <div class="col-10 text-light">
+                                <h1 class="text-center"><i class="fas fa-chalkboard-teacher"></i> Apply For Change</h1>
+                                <p class="text-center">Fill This Application form for the change.</p>
+                                <br/>
+                                <form method="POST" action="{{url_for('applysubmit')}}">
+                                        <input type="text" placeholder="First Name *" required="required" class="form-control my-2" name="firstname"/>
+                                        <input type="text" placeholder="Last Name *" required="required" class="form-control my-2" name="lastname"/>
+                                        <input type="text" placeholder="Institute / School Name *" required="required" name="schoolname" class="my-2 form-control"/>
+                                        <input type="email" placeholder="E-Mail *" name="email" required="required"  class="my-2 form-control" />
+                                        <input type="tel" placeholder="Mobile *" name="mobile" required="required"  class="my-2 form-control" />
+                                        <input type="text" placeholder="City *" name="city" required="required" class="my-2 form-control" />
+                                        <div style="float:right;" class=""><button type="submit" class="btn btn-outline-light px-5">Apply <i class="fas fa-angle-double-right"></i></button></div>
+                                    
+                                </form>
+                                <br/><br/>
+                                <p class="text-center">You'll receive an email after applying the form where you'll get 
+                                    so write an authentic email here.
+                                </p>
+                            </div>
+                            <div class="col-1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer bg-dark p-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-8 p-5">
+                            <div class="row">
+                                <div class="col-md-6 text-light text-center">
+                                    <h4>Contact Us</h4>
+                                    <p>We Understande the need of our clients.</p>
+                                    <hr/>
+                                    <h5><i class="fas fa-phone"></i> 7009750087</h5>
+                                    <h5><i class="fas fa-envelope"></i> helpdesk@educast.com</h5>
+                                    <p>or you may visit at</p>
+                                    <p><i class="fas fa-map-marker-alt"></i> 44, Floor 1, ABC Market, Liberty Market, Opp. Rly Stn. Amritsar</p>
+                                </div>
+                                <div class="col-md-6 text-center text-light">
+                                    <h4>Quick Links</h4>
+                                    <br/>
+                                    <hr/>
+                                    <a class='text-light' href="https://www.payumoney.com">Payment Partner</a><br/>
+                                    <a class='text-light' href="{{url_for('apply')}}">Apply For Membership</a><br/>
+                                    <a class='text-light' href="{{url_for('apply')}}">Thing For Parents</a><br/>
+                                    <a class='text-light' href="{{url_for('apply')}}">FAQs</a><br/>
+                                    <a class='text-light' href="{{url_for('admin')}}">Edu Admin</a><br/>
+                                    <br/>
+                                    <p>Connect With Us: </p>
+                                    <a class='text-light' href="https://www.facebook.com/narangkishore98"><i class="fab fa-facebook"></i></a>&nbsp;
+                                    <a class='text-light' href="https://www.instagram.com/narangkishore98"><i class="fab fa-instagram"></i></a>&nbsp;
+                                    <a class='text-light' href="https://www.plus.google.com/narangkishore98"><i class="fab fa-google-plus-square"></i></a>
+                                </div>
+                                <div class="col-md-6"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-5">
+                            <img class="img fluid" width="90%" src="/static/images/educast-w.png"/><br/><br/>
+                            <p class="text-center text-light">&copy; Educast. All Rights Reserved.</p>
+                            <br/>
+                            <p class="text-center text-light">Made with <i class="fas fa-heart text-danger"></i> by <a style="text-decoration:none;"class="text-light " href="https://www.bikloo.co.nf">Bikloo</a> in India</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+          {%print('hello')%}  
+      {%if request.args.get('apply') == 'True' and 'applymail' in session%}
+            
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-success" id="exampleModalLabel">Application Confirmed</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              We've sent a mail at <span class="text-success"><b>{%print(session['applymail'])%}</b></span>. Kindly check your email and login with the credentials given there. You may login with your Application ID and password given to you
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a  class="btn btn-primary"  href="{{url_for('s_login')}}">Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+          $('#exampleModal').modal('show');
+      </script>
+        {{session.pop('applymail')}}
+        {%elif request.args.get('apply') == 'False'%}
+        <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-danger" id="exampleModalLabel">Application Failed</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    We are sorry but you are already registered with us. Kindly Login with the credentials provided.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a  class="btn btn-primary"  href="{{url_for('s_login')}}">Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+              $('#exampleModal').modal('show');
+          </script>
+      {%endif%}
+    </body>
+</html>

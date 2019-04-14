@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Welcome To Educast</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+    
+    </head>
+    <body style="overflow-x:hidden" class="be-font">
+        {% include "school/first-navbar.html"%}
+        <div class="row ">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 bg-light p-5">
+                <h1 class="text-center ">Hello, <span class="text-color-one"></span> {{name}}</h1>
+                
+                <div class="row mb-3">
+                    
+                    <div class="col-12">
+                        <form action="{{url_for('uploader')}}" method="POST" enctype="multipart/form-data">
+                            <div class="custom-file my-2">
+                                <input type="file" class="custom-file-input" name="file1" id="customFile1" required="required" accept="application/pdf" />
+                                <label class="custom-file-label" for="customFile1" id="file1">Select School Registeration Certificate</label>
+                              </div>
+                              <div class="custom-file my-2">
+                                <input type="file" class="custom-file-input" id="customFile2"  name="file2" required="required"  accept="application/pdf"/>
+                                <label class="custom-file-label" for="customFile2" id="file2">Select Identity Proof</label>
+                              </div>
+                              <div class="custom-file my-2">
+                                <input type="file" class="custom-file-input" id="customFile3"  name="file3" required="required"  accept="application/pdf"/>
+                                <label class="custom-file-label" for="customFile3" id="file3">Select Address Proof</label>
+                              </div>
+                              <div class="custom-file my-2">
+                                <input type="file" class="custom-file-input" id="customFile4"  name="file4" required="required"  accept="application/pdf"/>
+                                <label class="custom-file-label" for="customFile4" id="file4">Select GST Registeration Number Proof</label>
+                              </div>
+                              <button type="submit" class="btn btn-outline-dark my-2" style="float:right">Submit</button>
+                        </form><br/><br/>
+                        <center>
+                            {%if status==0 %}
+                            <div class="alert alert-info text-center">
+                                <p><i class="fas fa-info-circle"></i> We need the above documents for proceeding your final application</p>
+                            </div>
+                            {%elif status==1%}
+                            <div class="alert alert-info text-center">
+                                    <p><i class="fas fa-info-circle"></i> We have recived your documents, you'll recive a final mail once we verify your account. <b>Please do not upload your documents again, this could lead you to late in account verification</b></p>
+                                </div>
+                            {%endif%}
+                        </center>
+                    </div>
+                    
+                </div>
+
+        </div>
+            <div class="col-md-2"></div>
+        </div>
+        <script>
+            function file1()
+            {
+                alert("CLICKED");
+            }
+
+            $('#customFile1').on('input', function(){
+                var s=$("#customFile1").val();
+                var c=s.lastIndexOf("\\");
+                var r=s.substring(c+1,s.length);
+                $("#file1").html(r);});
+
+                $('#customFile2').on('input', function(){
+                var s=$("#customFile2").val();
+                var c=s.lastIndexOf("\\");
+                var r=s.substring(c+1,s.length);
+                $("#file2").html(r);});
+
+            $('#customFile3').on('input', function(){
+                var s=$("#customFile3").val();
+                var c=s.lastIndexOf("\\");
+                var r=s.substring(c+1,s.length);
+                $("#file3").html(r);});
+
+            $('#customFile4').on('input', function(){
+                var s=$("#customFile4").val();
+                var c=s.lastIndexOf("\\");
+                var r=s.substring(c+1,s.length);
+                $("#file4").html(r);});
+        </script>
+      
+    </body>
+</html>

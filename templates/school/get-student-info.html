@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Educast - The Revolutionary Education System</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <link rel="stylesheet" href="/static/css/schoolsidebar.css"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd',changeMonth: true,
+      changeYear: true });
+        } );
+        </script>
+    </head>
+    
+<body class="be-font">
+
+    <div id="wrapper">
+    {%include "school/sidebar.html"%}
+        {%include "school/school-navbar.html"%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 bg-color-one p-5 " style=" border-top: 3px solid white;">
+                <h1 class="text-center txt-color-two mt-3">Add New Student</h1>
+                <p class="text-center txt-color-two">Add a new student in your school and start managing everything under your tips</p>
+                <hr class="hr-white"/>
+                <form  method="POST" action="{{url_for('school_student_newadd_parentinfo', name=session['username'])}}">
+                    <input type="text" class="form-control  my-2" required="required" placeholder="Student Name * " name="studentname"/>
+                    <input type="text" id="datepicker" class="form-control  my-2" required="required" placeholder="Date Of Birth (MM/DD/YYYY) * " name="studentdob"/>
+                    <input type="text" class="form-control  my-2" required="required" placeholder="Class to be Admitted* " name="studentclass"/>
+                    <input type="text" class="form-control  my-2" required="required" placeholder="UIDAI Number* " name="studentuid"/>
+                    <input type="text" class="form-control  my-2" required="required" placeholder="Address Line 1 * " name="studentaddress1"/>
+                    <input type="text" class="form-control  my-2" required="required" placeholder="City * " name="studentcity"/>
+                    
+                    <select class="form-control" name="studentstate" required="required">
+                        <option disabled="disabled" selected="selected">Select State *</option>
+                        {%for state in states%}
+                            <option value="{{state[0]}}">{{state[1]}}</option>
+                        {%endfor%}
+                    </select>
+                    <input type="text" class="form-control my-2" placeholder="Parent ID (if available)" name = "parentid"/>
+                    <p class="text-white" >mandatory fields are marked with * <br/> Student Admission Date will be the date of adding</p>
+                    <input type="submit" class="btn btn-lg btn-light my-2 btn-block" value="Next" />
+                    
+                </form>
+                
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+    </div>
+                <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $( function() {
+    $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
+  } );
+    </script>
+  {%if request.args.get('parentid') == 'not-available' %}
+  <script>
+      alert('Parent ID Does not Exists. Please try a valid one');
+  </script> 
+  {%endif%}
+        
+    
+
+</body>
+</html>

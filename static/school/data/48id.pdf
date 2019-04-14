@@ -1,0 +1,105 @@
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 14, 2018 at 05:55 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `educast`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `query`
+--
+
+CREATE TABLE `query` (
+  `queryid` int(6) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `query` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `query`
+--
+
+INSERT INTO `query` (`queryid`, `name`, `email`, `phone`, `query`) VALUES
+(1, 'Kishore Narang', 'biklooindia@gmail.com', '7009750087', 'My Query');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schoolapply`
+--
+
+CREATE TABLE `schoolapply` (
+  `applicationid` int(6) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `schoolname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `mobile` bigint(10) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `password` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `schoolapply`
+--
+
+INSERT INTO `schoolapply` (`applicationid`, `firstname`, `lastname`, `schoolname`, `email`, `mobile`, `city`, `password`) VALUES
+(3, 'Kishore', 'Narang', 'St. Xavier', 'barar@gmail.com', 9656550652, 'ASR', ''),
+(14, 'Anuj', 'Narang', 'ss', 'anujnarang12@hotmail.com', 9780039826, 'ASR', '49157672XD'),
+(16, 'Rhythm', 'Josan', 'Bikloo Education', 'rhythmjosan99@gmail.com', 7347612946, 'Amritsar', 'D1692939X1'),
+(17, 'Kishore', 'Narang', 'BiklooEducation', 'narangkishore98@gmail.com', 9646550652, 'Amritsar', '7CB5A410X3'),
+(18, 'Kishore', 'Narang', 'Bikloo Education', 'narangkishore98@rediffmail.com', 9780039826, 'Amritsar', '0835FF6DX8');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `query`
+--
+ALTER TABLE `query`
+  ADD PRIMARY KEY (`queryid`);
+
+--
+-- Indexes for table `schoolapply`
+--
+ALTER TABLE `schoolapply`
+  ADD PRIMARY KEY (`applicationid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `query`
+--
+ALTER TABLE `query`
+  MODIFY `queryid` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `schoolapply`
+--
+ALTER TABLE `schoolapply`
+  MODIFY `applicationid` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

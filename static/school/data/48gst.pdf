@@ -1,0 +1,145 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['adminmail'])==0)
+    {
+        header('Location:index.php');
+    }
+    if(isset($_POST['logout']))
+    {
+        if(strcmp($_POST['logout'],"logout"))
+        {
+            session_destroy();
+            header("Location:index.php");
+        }
+    }
+?>
+<html>
+    <head>
+        <title>Dashboard - Shivoham Sewa Mandal</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <script>
+            function formSub()
+            {
+                var form=document.getElementById("formSub");
+                form.submit();
+            }
+            function newForm()
+            {
+                var form=document.getElementById("newForm");
+                form.submit();
+            }
+        </script>
+    </head>
+    <body style="font-family:garamond; ">
+        <div class="container-fluid">
+        <div class="row bg-danger p-1">
+            <div class="col-6">
+            <h4 class="text-light">Shivoham Sewa Mandal - Admin</h4></div>
+            <div class="col-6">
+            <h4 class="text-right"> <a class="btn bt-sm btn-light text-right" href="dashboard.php" >Back</a>
+                 <a class="btn bt-sm btn-light text-right" href="#" onclick="formSub()">Logout</a></h4>
+                <form id="formSub" method="POST" action="<?php $_POST_SELF?>">
+                    <input type="hidden" name="logout" value="logut"/>
+                </form>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-12">
+                <h5 class="text-center">Your Portfolio</h5>
+            </div>
+            
+        </div> 
+        <?php 
+            if(isset($_SESSION['deletesuccess'])!=0)
+            {
+                ?>
+                    <div class="alert alert-success text-center">
+                        <b>Image Deleted Succesfully</b>
+                    </div>
+                <?php
+                unset($_SESSION['deletesuccess']);
+            }
+        ?>
+        <div class="row ">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <form id="newForm">
+                    <div class="row m-3">
+                        <div class="col-md-2"></div>
+                        <div class="col-8">
+                        
+                            <select name="year" class="form-control" onchange="newForm()" >
+                                <option disabled="disabled" selected="selected" >--Select Year--</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2"></div>
+                    </div>
+                    </form>
+            </div>
+            <div class="col-md-3"></div>
+        </div> 
+        <div class="row  bg-light p-5">
+            <?php 
+                if(isset($_GET['year']))
+                {
+                    $url="fdb20.biz.nf";
+                $usrname="2750502_shivoham";
+                $password="hypersecurity12";
+                $db="2750502_shivoham";
+                $conn= new mysqli($url,$usrname,$password,$db);
+                    $year=$_GET['year'];
+                    $retval=$conn->query("SELECT imagename,pid FROM portfolio WHERE year=$year ORDER BY dnt DESC");
+                    if($retval->num_rows>0)
+                    {
+                                 while($row=$retval->fetch_assoc())
+                            {
+                                ?>
+                                    <div class="col-md-3">
+                                        <center>
+                                            <img class="img-fluid" width="80%" height src="../img/portfolioapp/<?php echo($row['imagename']); ?>"/><br/><br/>
+                                            <a href="delete-from-portfolio.php?id=<?php echo($row['pid']); ?>&year=<?php echo($year);?>" class="btn btn-sm btn-danger">Delete Image</a>
+                                            </center>
+                                    </div>
+                                <?php
+                            }
+                    }
+                    else
+                    {
+                        
+                        
+                            ?>
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger text-center">
+                                        <b>No Images Found for A Particular year</b>
+                                    </div>
+                                </div>
+                            <?php
+                        
+                       
+
+                    }
+
+                }
+            ?>
+        </div>  
+        <div class="row bg-light p-1" style="position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;">
+            <div class="col-md-12">
+                <h6 class="text-center text-dark">Website made with <i class="fas fa-heart text-danger"></i> by <a href="http://bikloo.co.nf" style="text-decoration:none;" class="text-dark">Bikloo </a> in India</h6>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>

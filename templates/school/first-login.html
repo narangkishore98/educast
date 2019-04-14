@@ -1,0 +1,127 @@
+<html>
+    <head>
+        <title>Welcome To Educast</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <script>
+                $(function(){
+        $("#username").keyup(function(){
+            var username=$("#username").val();
+            $.ajax({
+                url:"/school/checkusername",
+                data:$("#myform").serialize(),
+                type:"GET",
+                success:function(response){
+                    console.log(response);
+                    var obj=JSON.parse(response);
+                    console.log(obj.user);
+                    if (obj.user === 'exist')
+                    {
+                        $("#printer").html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Sorry!</strong> Username already exists. Try Some Other");
+                        $("#submit").attr("disabled","disabled");
+                        $("#pass").attr("disabled","disabled");
+                        $("#cpass").attr("disabled","disabled");
+                        $("#printer").attr("class","alert alert-danger alert-dismissible");
+                    }
+                    else
+                    {
+                        $("#printer").html("");
+                        $("#submit").removeAttr("disabled");
+                        $("#pass").removeAttr("disabled");
+                        $("#cpass").removeAttr("disabled");
+                        $("#printer").removeAttr("class")
+                    }
+
+                },
+                error: function(error){
+                    console.log(error);
+                    
+                }
+            });
+        });
+    });
+    
+
+ 
+    function submitForm()
+    {
+        document.myform.submit();
+
+       
+    }
+
+</script>
+    </head>
+    <body style="overflow-x:hidden" class="be-font">
+        {% include "school/first-navbar.html"%}
+        <div class="contaoner-fluid">
+            <div class="row p-4">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <center>
+                        <h3>Hello, <span class="text-color-one">{{name}}</span></h3>
+                        <h4 onclick="x">Add Username &amp; Set Password</h4>
+                        <div class="row">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <form id="myform" name="myform" action="{{url_for('set_username')}}"  method="POST" >
+                                        <input type="text" id="username" autocomplete="username" name="username" required="required" placeholder="Set A Unique Username" class="form-control text-color-one mt-5"/>
+                                        
+                                        <hr/>
+                                        <input type="password" autocomplete="new-password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" id="pass" name="pass" required="required" placeholder="Change Password" class="form-control my-2"/>
+                                        <input type="password" autocomplete="new-password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" id="cpass" name="cpass" required="required" placeholder="Retype Change Password" class="form-control my-2"/>
+                                        <input type="submit" id="submit" value="Submit" class="btn  btn-dark" id="submit" style="float:right;"/>
+                                        <br/><br/>
+                                        <div  id="printer">
+                                                
+                                        </div>
+                                    </form>
+                                    <div class="breadcrumb">
+                                        <ul style="text-align:left;">
+                                            <li>Choose a Unique Username</li>
+                                            <li>Your password must have atleast a number, uppercase and lowecase letter.</li>
+                                            <li>Password length must be atleast 8 characters</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-2"></div>
+                        </div>
+                    </center>
+                </div>
+                <div class="col-2"></div>
+
+            </div>
+        </div>
+       <script>
+           $("#cpass").keyup(function(){
+       
+        var p=$("#pass").val();
+        var cp=$("#cpass").val();
+      
+        if(p===(cp))
+        {
+        
+                
+            $("#printer").removeAttr("class")   ;
+            $("#printer").html("");
+            $("#submit").removeAttr("disabled");
+           
+        }
+        else
+        {
+            $("#printer").html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Sorry!</strong> Passwords Do Not Match");
+            $("#printer").attr("class","alert alert-info alert-dismissible");
+            $("#submit").attr("disabled","disabled")
+            return 
+            
+        }
+    });
+       </script>
+       
+    </body>
+</html>

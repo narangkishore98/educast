@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Educast - The Revolutionary Education System</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <link rel="stylesheet" href="/static/css/schoolsidebar.css"/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
+        } );
+        </script>
+    </head>
+    
+<body class="be-font">
+
+    <div id="wrapper">
+    {%include "school/sidebar.html"%}
+        {%include "school/school-navbar.html"%}
+    <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12 text-center text-dark">
+                  <br>
+                  <h2>Manage Your Classes Here</h2>
+              </div>
+          </div> 
+          <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                  <br>
+                  <table class="table table-light table-hovered table-striped table-bordered text-center">
+                      <thead>
+                          <tr>
+               
+                              <th>Floor No.</th>
+                              <th>Class Name</th>
+                              
+                              <th>Class Type</th>
+                              <th>Faculty Assigned</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          {%for class in classes%}
+                            <tr>
+              
+                                <td>{{class[4]}}</td>
+                                <td>{{class[2]}}</td>
+                                <td>{%if class[3] == 1 %} Class {%elif class[4] == 2%} Hall {%elif class[4] == 3%} Lab {%elif class[4] == 4%} Office {%endif%}</td>
+                                <td>{%if class[5] == 0%}Not Assigned (<span style="font-weight:bold;"><a href="{{url_for('school_faculty_assignhandler',name=session['username'],classid=class[1])}}" >Assign Faculty</a></span>){%else%}{{class[9]}} (<span style="font-weight:bold;"><a href="{{url_for('school_faculty_assignhandler',name=session['username'],classid=class[1])}}" >Change</a></span>){%endif%}</td>
+                            
+                            </tr>
+                          {%endfor%}
+                      </tbody>
+                  </table>
+              </div>
+              <div class="col-md-2"></div>
+          </div>
+    </div>
+    </div>
+                <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+   
+    </script>
+         
+        
+    
+
+</body>
+</html>

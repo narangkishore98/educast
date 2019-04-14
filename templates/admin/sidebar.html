@@ -1,0 +1,38 @@
+<!-- Sidebar -->
+        <div id="sidebar-wrapper" >
+            <ul class="sidebar-nav">
+            <br/>
+                <li class="sidebar-brand">
+
+                    <h1><a href="#" style="font-weight: bold">
+                        Educast
+                    </a></h1>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{url_for('admin_pending_applications',pageno = 1)}}">Pending Applications</a>
+                </li>
+                <li>
+                    <a href="{{url_for('admin_registered_school',pageno =1)}}">Registered Schools</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+
+                    <a href="{{url_for('admin_logout')}}">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->

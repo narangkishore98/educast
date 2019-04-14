@@ -1,0 +1,38 @@
+<!-- Sidebar -->
+        <div id="sidebar-wrapper" >
+            <ul class="sidebar-nav">
+            <br/>
+                <li class="sidebar-brand">
+
+                    <h1><a href="#" style="font-weight: bold">
+                        Educast
+                    </a></h1>
+                </li>
+                <li>
+                    <a href="{{url_for('school_dashboard',name=session['username'])}}">Dashboard</a>
+                </li>
+                <li>
+                    <a href="{{url_for('school_faculty_add', name=session['username'])}}">Add Employees</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+
+                    <a href="{{url_for('s_login_unauthenticate')}}">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->

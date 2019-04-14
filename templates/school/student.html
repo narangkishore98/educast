@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <title>Educast - The Revolutionary Education System</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <link rel="stylesheet" href="/static/css/schoolsidebar.css"/>
+       
+                
+     
+            
+            
+    </head>
+    
+<body class="be-font">
+
+    <div id="wrapper">
+    {%include "school/sidebar.html"%}
+        {%include "school/school-navbar.html"%}
+    <div class="container-fluid">
+        <div class="row m-4 bg-danger breadcrumb text-white">
+            <div class="col-md-12 p-3">
+                <h3 class="text-center text-white"><strong>Welcome To Student Area</strong></h3>
+                <h5 class="text-color-two">Hello<b> {{data[1]}} {{data[2]}}</b>,</h5>
+                <p>Here is the student management area for your school <span class="text-color-two"><b>{{data[3]}}</b></span>
+                <br/>Click on <b>Edu</b> Logo for start using services or you can go to some other modules.</p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-4   text-white">
+                <div class="row py-4 px-3 bg-primary mx-5 my-3">
+                    <div class="col-12">
+                        <a href="{{url_for('school_student_newadd_studentinfo', name=session['username'])}}" style="text-decoration:none" class="text-white">
+                            <h4 class="text-center"><i class="fas fa-user-plus fa-2x"></i><br/> New Admissions</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-white">
+                <div class="row py-4 px-3 bg-info mx-5 my-3">
+                    <div class="col-12">
+                        <a href="{{url_for('school_faculty_view', name=session['username'])}}" style="text-decoration:none" class="text-white">
+                            <h4 class="text-center"><i class="fas fa-exchange-alt fa-2x"></i><br/> Transfer Admission</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-white">
+                <div class="row py-4 px-3 bg-secondary mx-5 my-3">
+                    <div class="col-12">
+                        <a href="{{url_for('school_faculty_manage', name=session['username'])}}" style="text-decoration:none" class="text-white">
+                            <h4 class="text-center"><i class="fas fa-cog fa-2x"></i><br/> Manage</h4>
+                        </a>            
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+                <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    
+    </script>
+           
+           
+        
+    
+
+</body>
+</html>

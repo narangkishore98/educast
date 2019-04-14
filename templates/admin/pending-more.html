@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Educast - The Revolutionary Education System</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <link rel="stylesheet" href="/static/css/sidebar.css"/>
+        <script>
+            function changeLoc()
+            {
+                location.href = "{{url_for('admin_verify_school' , id = data [0])}}";
+            }
+            function activateBtn()
+            {
+           
+                var btn = document.getElementById("btnbtn");
+                btn.removeAttribute("disabled")
+                
+                
+                    
+               
+            }
+            function deactivateBtn()
+            {
+                var btn = document.getElementById("btnbtn");
+                    btn.setAttribute("disabled","disabled");
+            }
+        </script>
+    </head>
+    
+<body class="be-font">
+
+    <div id="wrapper">
+    {%include "admin/sidebar.html"%}
+        {%include "admin/navbar.html"%}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 mt-5">
+                   <h1 class="text-center"> Application For <span class="text-success" style="font-weight: bold;">{{data[3]}}</span> </h1>
+                   <br/>
+                   <table class="table table-success table-bordered table-striped">
+                        <tr>
+                            <th>AppliCation ID</th>
+                            <td>{{data[0]}}</td>
+                        </tr>
+                        <tr>
+                            <th>School Name</th>
+                            <td>{{data[3]}}</td>
+                        </tr>
+                        <tr>
+                            <th>Owner Name</th>
+                            <td>{{data[1]}} {{data[2]}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{data[4]}}</td>
+                        </tr>
+                        <tr>
+                            <th>Mobile Number</th>
+                            <td>{{data[5]}}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>{{data[6]}}</td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td><a href="#">Send Password On Email ID</a></td>
+                        </tr>
+                   </table>
+                   {%if data[8] == 0 %}
+                   <h1 class="text-center"><strong>The Documents Are Not Uploaded Yet.</strong></h1>
+                   {%elif data[8] == 1 %}
+                   <div class="row">
+                       <div class="col-md-3">
+                           <center>
+                            <a href="{{url_for('static' , filename = 'school/data/'+str(data[0])+'rc.pdf')}}">
+                               <img src = "{{url_for('static' , filename = 'images/download.jpg')}}" alt= "Download Img" class="img-fluid"/><br/>
+                               
+                            </a>
+                            Registration Certificate
+                            </center>
+                       </div>
+                       <div class="col-md-3">
+                            <center>
+                             <a href="{{url_for('static' , filename = 'school/data/'+str(data[0])+'gst.pdf')}}">
+                                <img src = "{{url_for('static' , filename = 'images/download.jpg')}}" alt= "Download Img" class="img-fluid"/><br/>
+                                
+                             </a>
+                             GST Proof
+                             </center>
+                        </div>
+                        <div class="col-md-3">
+                                <center>
+                                 <a href="{{url_for('static' , filename = 'school/data/'+str(data[0])+'id.pdf')}}">
+                                    <img src = "{{url_for('static' , filename = 'images/download.jpg')}}" alt= "Download Img" class="img-fluid"/><br/>
+                                    
+                                 </a>
+                                 ID Proof
+                                 </center>
+                            </div>
+                            <div class="col-md-3">
+                                    <center>
+                                     <a href="{{url_for('static' , filename = 'school/data/'+str(data[0])+'ad.pdf')}}">
+                                        <img src = "{{url_for('static' , filename = 'images/download.jpg')}}" alt= "Download Img" class="img-fluid"/><br/>
+                                        
+                                     </a>
+                                     Address Proof
+                                     </center>
+                                </div>
+                   </div>
+                   <br/>
+                        <input type="radio" id="radio1" name="verify" value="no" checked="checked" onchange="deactivateBtn()"/>
+                        <label for="radio1">The Documents Are Not Verified Yet</label><br/>
+                        <input type="radio" id="radio2" name="verify" value="yes" onchange="activateBtn()"/>
+                        <label for="radio2">I Verify all the documents and have verified the school location physically and hence give permissions to the school to access the services of educast</label>
+                        <br/>
+                    <center>
+                        <button id="btnbtn" class="btn btn-outline-danger btn-lg" disabled="disabled" onclick="changeLoc()"><i class="fas fa-check"></i> &nbsp;&nbsp;Verify Account</button>
+                    </center>
+                    {%endif%}
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        </div>
+                <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+            
+        
+    
+
+</body>
+</html>

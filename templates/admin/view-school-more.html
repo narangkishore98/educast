@@ -1,0 +1,326 @@
+<html>
+    <head>
+        <title>Educast - The Revolutionary Education System</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link rel="stylesheet" href="/static/css/mycss.css"/>
+        <link rel="stylesheet" href="/static/css/sidebar.css"/>
+        <script>
+            var flag = true;
+            function changeToInput(id)
+            {
+                if(flag)
+                {
+                    var xid = id.substring(0,id.length-1);
+                    var letterid = xid + "2";
+                    var obj =document.getElementById(xid);
+                    var spanobj = document.getElementById(letterid);
+                    var text_on_it = spanobj.innerHTML;
+                    obj.innerHTML = "";
+                    var row = document.createElement("div");
+                    row.setAttribute("class","row");
+                    var col_8 = document.createElement("div");
+                    col_8.setAttribute("class","col-9");
+                    var col_2_1  = document.createElement("div");
+                    col_2_1.setAttribute("class","col-3");
+                    var inputfield = document.createElement("input");
+                    
+                    var opt1 = null;
+                    var opt2 = null;
+                    if(xid == "status")
+                    {
+                        inputfield = document.createElement("select");
+                        opt1 = document.createElement("option");
+                        opt2 = document.createElement("option");
+                        opt1.value = "2";//for activated 
+                        opt2.value = "3"; // for deactivated
+                        opt1.innerHTML = "<strong class = 'text-success'>Activated</strong>";
+                        opt2.innerHTML = "<strong class = 'text-danger'>Deactivated Temporarily</strong>";
+                        if(text_on_it == "Activated")
+                        {
+                            opt1.setAttribute("selected","selected");
+                        }
+                        else
+                        {
+                            opt2.setAttribute("selected","selected");
+                        }
+                        inputfield.appendChild(opt1);
+                        inputfield.appendChild(opt2);
+                    }
+                    else
+                    {
+                        inputfield.setAttribute("value",text_on_it);
+                    }
+                    if(xid == "email")
+                    {
+                        inputfield.setAttribute("type","email");
+                    }
+                    inputfield.setAttribute("name","xid");                                        
+                    inputfield.setAttribute("class","form-control");
+                    var btnOK = document.createElement("button");
+                    var btnCancel = document.createElement("button");
+                    btnOK.setAttribute("class","btn btn-success mr-1");
+                    btnCancel.setAttribute("class","btn btn-danger ml-1");
+                    btnOK.innerHTML = "<i class='fas fa-check'></i>";
+                    btnCancel.innerHTML = "<i class = 'fas fa-times'></i>";
+                    btnOK.type = "submit";
+                    btnCancel.type = "button";
+                    btnCancel.setAttribute("onclick","btnClose('"+xid+"','"+text_on_it+"')");
+                    btnCancel.setAttribute("id","cancel");
+                    var form = document.createElement("form");
+                    var hf = document.createElement("input");
+                    form.setAttribute("action","{{url_for('admin_registered_edit')}}");
+                    form.setAttribute("style","margin-bottom:-3px;")
+                    form.setAttribute("method","POST");
+                    hf.setAttribute("type","hidden");
+                    hf.setAttribute("name","previousdata");
+                    var rowid = document.createElement("input");
+                    rowid.setAttribute("type","hidden");
+                    rowid.setAttribute("name","rowid");
+                    rowid.setAttribute("value","{{data[0]}}");
+                    hf.setAttribute("value",getNumber(xid));
+                    col_8.appendChild(inputfield);
+                    col_8.appendChild(hf);
+                    col_8.appendChild(rowid);
+                    col_2_1.appendChild(btnOK);
+                    col_2_1.appendChild(btnCancel);
+                    row.appendChild(col_8);
+                    row.appendChild(col_2_1);
+                    //row.appendChild(col_2_2);
+                    form.appendChild(row);
+                    obj.appendChild(form);
+                    flag = false;
+                }
+                else
+                {
+                    showModal();
+                }   
+                           
+            }
+            function btnClose(id,text_on_it)
+            {
+                document.getElementById(id).innerHTML = "<span id='"+id+"2'>"+text_on_it+"</span> &nbsp;&nbsp;&nbsp;<i class='fas fa-pen text-success' id='"+id+"1' onclick='changeToInput(this.id)'>";
+                flag = true;
+            }
+            function getNumber(str)
+            {
+                if(str == "sname")
+                {
+                    return 1;
+                }
+                else if(str == "oname")
+                {
+                    return 2;
+                }
+                else if(str == "email")
+                {
+                    return 3;
+                }
+                else if(str == "mobile")
+                {
+                    return 4;
+                }
+                else if(str == "city")
+                {
+                    return 5;
+                }
+                else if(str =="status")
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        </script>
+        <style>
+            td > i{
+                cursor: pointer;
+            }
+            .col-md-2 > i{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    
+<body class="be-font">
+
+    <div id="wrapper">
+    {%include "admin/sidebar.html"%}
+        {%include "admin/navbar.html"%}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8 mt-5">
+                   <h1 class="text-center"> Application For <span class="text-success" style="font-weight: bold;">{{data[3]}}</span> </h1>
+                   <br/>
+                   <table class="table table-success table-bordered table-striped">
+                        <tr>
+                            <th>AppliCation ID</th>
+                            <td >{{data[0]}} </td>
+                        </tr>
+                        <tr>
+                            <th>School Name</th>
+                            <td id="sname"><span id="sname2">{{data[3]}}</span>   &nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="sname1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>Owner Name</th>
+                            <td id="oname"><span id="oname2">{{data[1]}} {{data[2]}}</span> &nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="oname1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td id="email"><span id="email2">{{data[4]}}</span>&nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="email1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>Mobile Number</th>
+                            <td id="mobile"><span id="mobile2">{{data[5]}}</span> &nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="mobile1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td id="city"><span id="city2">{{data[6]}}</span> &nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="city1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>Password</th>
+                            <td><a href="{{url_for('admin_sendpasswordmail',aid=data[0])}}">Send Password On Email ID</a></td>
+                        </tr>
+                        <tr>
+                            <th>Account Status</th>
+                            <td id="status">{%if data[8] == 2%}<span class="text-success"><strong><span id="status2">Activated</span></strong></span>{%elif data[8]== 3 %}<span class="text-danger"><strong><span id="status2">Deactivated Temporarily</span></strong></span>{%endif%} &nbsp;&nbsp;&nbsp;<i class="fas fa-pen text-success" id="status1" onclick="changeToInput(this.id)"></i></td>
+                        </tr>
+                        <tr>
+                            <th>Username</th>
+                            <td>{%if data[10]==None%}<span><strong>Username not set yet.</strong></span>{%else%} {{data[10]}} {%endif%}</td>
+                        </tr>
+                   </table>
+                   <br/>
+                   <hr class="hr-black"/>
+                   <h1 class="text-center">Classes For <span class="text-success" style="font-weight: bold;">{{data[3]}}</span></h1>
+                   <div class="row bg-secondary-transparent  my-3 p-5">
+                       {%if len(classes) == 0 %}
+                       <h1>You have added no classes yet. Try Adding Them</h1>
+                       {%else%}
+                       {%for class in classes%}
+                       <div class="col-md-2 bg-success-transparent border mx-2 my-2 p-1 rounded">
+                            <center>
+                                <h4 style="font-weight:bold;">{{class[2]}}</h4>
+                                {{class[6]}} Sections
+                        
+                                <p>Class Type: {{classtype[class[3]]}}</p>
+                                <p class="bg-white text-dark">Floor: {{class[4]}}</p>
+                                <a href="#" style="text-decoration: none;"  title="Delete {{class[3]}}"><i class="fas fa-trash text-danger text-center"></i> </a> &nbsp;&nbsp;
+                            </center>   
+                            
+                       </div>
+                    
+                       {%endfor%}
+                       {%endif%}
+                   </div>
+                   <center>
+                        <button type="button" class="btn btn-success mb-5" data-toggle="modal" data-target="#addclass"><i class="fas fa-plus"> Add Class</i></button>
+                   </center>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+        </div>
+        </div>
+                <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>    
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+              <h5 class="modal-title" id="exampleModalLongTitle"><i class="fas fa-exclamation-triangle"></i> Already In Edit Mode</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              One of your edit is open. Please commit those changes before doing any other. 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Okay</button>
+             
+            </div>
+          </div>
+        </div>
+      </div>    
+
+      <!-- Add Classes -->
+      <div class="modal fade" id="addclass" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <form accept-charset="utf-8" action="{{url_for('admin_add_class')}}" method="POST" id="finalform">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Add Class for {{data[3]}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+           
+                  <input type="text" class="form-control my-2" name="classname" placeholder="Class Name *" required="required"/>
+                  <input type="number" min="1" required="required" class="form-control my-2" name="sectioncount" placeholder="Number Of Sections *"/> 
+                  <input type="number" class="form-control my-2" name="floornumber" placeholder="Floor Number*" min="0" required="required" />
+                  <select name="classtype" class="form-control my-2" >
+                      <option value="1">Class</option>
+                      <option value="2">Hall</option>
+                      <option value="3">Lab</option>
+                      <option value="4">Office</option>
+                  </select> 
+                  <input type="hidden" name="id" value="{{data[0]}}"/>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success" onclick="">Add</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <script>
+          function showModal()
+          {
+              $("#myModal").modal("show");
+          }
+      </script>
+      
+      {%if data[12] == "true" %}
+      <div class="modal fade" id="verify" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <form accept-charset="utf-8" action="{{url_for('admin_add_class')}}" method="POST" id="finalform">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">{{data[3]}} </h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                The School Account Has Been Successfully verified. Now You can manage more about the school.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+      <script>
+          $(window).on("load",function(){
+              $("#verify").modal("show");
+          });
+      </script>
+      {%endif%}
+     
+</body>
+</html>

@@ -1,0 +1,170 @@
+
+
+
+
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+/*Scrool bar ends here*/
+
+
+.be-font
+{
+    font-family: garamond;
+}
+.text-educast{
+    color:#00B5EC;
+}
+.bg-educast{
+    background: rgba(51,211,255,1);
+background: -moz-linear-gradient(left, rgba(51,211,255,1) 0%, rgba(51,211,255,1) 13%, rgba(0,181,236,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(51,211,255,1)), color-stop(13%, rgba(51,211,255,1)), color-stop(100%, rgba(0,181,236,1)));
+background: -webkit-linear-gradient(left, rgba(51,211,255,1) 0%, rgba(51,211,255,1) 13%, rgba(0,181,236,1) 100%);
+background: -o-linear-gradient(left, rgba(51,211,255,1) 0%, rgba(51,211,255,1) 13%, rgba(0,181,236,1) 100%);
+background: -ms-linear-gradient(left, rgba(51,211,255,1) 0%, rgba(51,211,255,1) 13%, rgba(0,181,236,1) 100%);
+background: linear-gradient(to right, rgba(51,211,255,1) 0%, rgba(51,211,255,1) 13%, rgba(0,181,236,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33d3ff', endColorstr='#00b5ec', GradientType=1 );
+}
+.bg-light-transparent
+{
+	background-color: rgba(248,249,250,0.6)
+}
+.bg-success-transparent
+{
+	background-color: rgba(40,197,69,0.6)
+}
+.bg-dark-transparent
+{
+	background-color: rgba(52,58,64,0.85)
+}
+.bg-primary-transparent
+{
+	background-color: rgba(0,123,255,0.6)
+}
+.bg-danger-transparent
+{
+	background-color: rgba(220,53,69,0.6)
+}
+.bg-warning-transparent
+{
+	background-color: rgba(255,193,7,0.6)
+}
+.bg-secondary-transparent
+{
+	background-color: rgba(108,117,125,0.6)
+}
+.index-bg{
+    background-image: url("/static/images/index.jpg");
+    background-size: cover;
+    height: 90vh;
+}
+.bg-classroom{
+    background-image: url("/static/images/classroom.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+.bg-future
+{
+    background-image: url("/static/images/future.jpg");
+    background-size: cover;
+    
+
+}
+.bg-schoolapply{
+    background-image: url("/static/images/schoolapply.jpg");
+    background-size: cover;
+    
+}
+
+.be-footer{
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+
+/*this is hover effect*/
+
+.effect {
+  
+  display: inline-block;
+  overflow: hidden;
+  &:before, &:after {
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: $hover;
+  }
+  &:before {
+    bottom: 0;
+    transform:  translateX(-100%);
+  }
+  &:after {
+    top: 0;
+    transform:  translateX(100%);
+  }
+  &:hover:before, &:hover:after {
+    transform:  translateX(0);
+  }
+}
+
+
+.cl-effect-15 a {
+	color: rgba(0,0,0,0.2);
+	font-weight: 700;
+	text-shadow: none;
+}
+
+.cl-effect-15 a::before {
+	color: #fff;
+	content: attr(data-hover);
+	position: absolute;
+	transition: transform 0.3s, opacity 0.3s;
+}
+
+.cl-effect-15 a:hover::before,
+.cl-effect-15 a:focus::before {
+	transform: scale(0.9);
+	opacity: 0;
+}
+
+
+/* Educast Template */
+.bg-color-one{
+    background-color: #a31e39;
+}
+.text-color-one{
+    color:#a31e39;
+}
+.bg-color-two
+{
+    background-color: #D6E4E1;
+}
+.txt-color-two
+{
+    color:#D6E4E1;
+}
+
+.hr-white{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+.hr-black{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.hr-green{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(40, 167, 69, 0), rgba(40, 167, 69, 0.75), rgba(40, 167, 69, 0));
+}
